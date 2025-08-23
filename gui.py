@@ -127,7 +127,7 @@ def search_student_gui():
 
     # Load, blur, and set background image
     try:
-        bg_image = Image.open(resource_path("back_ground.jpeg"))
+        bg_image = Image.open(resource_path("back_ground.jpg"))
         bg_image = bg_image.resize((300, 250), Image.Resampling.LANCZOS)
         bg_image = bg_image.filter(ImageFilter.GaussianBlur(radius=5))
         bg_photo_popup = ImageTk.PhotoImage(bg_image)
@@ -189,7 +189,7 @@ def delete_student_gui():
 
     # Load, blur, and set background image
     try:
-        bg_image = Image.open(resource_path("back_ground.jpeg"))
+        bg_image = Image.open(resource_path("back_ground.jpg"))
         bg_image = bg_image.resize((300, 250), Image.Resampling.LANCZOS)
         bg_image = bg_image.filter(ImageFilter.GaussianBlur(radius=5))
         bg_photo_popup = ImageTk.PhotoImage(bg_image)
@@ -325,7 +325,7 @@ canvas.grid(row=0, column=0, rowspan=3, columnspan=1, sticky="nsew")
 
 # Load and set background image
 try:
-    bg_image = Image.open(resource_path("back_ground.jpeg"))
+    bg_image = Image.open(resource_path("back_ground.jpg"))
     bg_image = bg_image.resize((700, 600), Image.Resampling.LANCZOS)
     bg_photo = ImageTk.PhotoImage(bg_image)
     canvas.create_image(0, 0, image=bg_photo, anchor="nw")

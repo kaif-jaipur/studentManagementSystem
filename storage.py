@@ -141,10 +141,9 @@ def search_student(query):
     query = query.lower()
     return [s for s in students if query in s.name.lower()]
 
-def delete_student(name):
-    """Delete a student by name (case-insensitive)."""
+def delete_student(student_obj):
+    """Delete a student object from the file."""
     students = load_students()
-    name = name.lower()
-    updated_students = [s for s in students if s.name.lower() != name]
+    updated_students = [s for s in students if s != student_obj]  # Compare objects
     with open("students.dat", "wb") as file:
         pickle.dump(updated_students, file)
