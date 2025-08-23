@@ -4,6 +4,17 @@ from PIL import Image, ImageTk, ImageFilter
 from student import student
 from storage import save_student, load_students, search_student, delete_student
 
+import sys
+import os
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller."""
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 def validate_age_input(text):
     """Validate that age input is numeric and within range."""
     if text == "" or (text.isdigit() and 0 < int(text) <= 120):
@@ -116,7 +127,7 @@ def search_student_gui():
 
     # Load, blur, and set background image
     try:
-        bg_image = Image.open("back_ground.jpeg")
+        bg_image = Image.open(resource_path("back_ground.jpeg"))
         bg_image = bg_image.resize((300, 250), Image.Resampling.LANCZOS)
         bg_image = bg_image.filter(ImageFilter.GaussianBlur(radius=5))
         bg_photo_popup = ImageTk.PhotoImage(bg_image)
@@ -178,7 +189,7 @@ def delete_student_gui():
 
     # Load, blur, and set background image
     try:
-        bg_image = Image.open("back_ground.jpeg")
+        bg_image = Image.open(resource_path("back_ground.jpeg"))
         bg_image = bg_image.resize((300, 250), Image.Resampling.LANCZOS)
         bg_image = bg_image.filter(ImageFilter.GaussianBlur(radius=5))
         bg_photo_popup = ImageTk.PhotoImage(bg_image)
@@ -314,7 +325,7 @@ canvas.grid(row=0, column=0, rowspan=3, columnspan=1, sticky="nsew")
 
 # Load and set background image
 try:
-    bg_image = Image.open("back_ground.jpeg")
+    bg_image = Image.open(resource_path("back_ground.jpeg"))
     bg_image = bg_image.resize((700, 600), Image.Resampling.LANCZOS)
     bg_photo = ImageTk.PhotoImage(bg_image)
     canvas.create_image(0, 0, image=bg_photo, anchor="nw")
